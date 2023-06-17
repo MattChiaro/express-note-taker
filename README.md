@@ -1,140 +1,37 @@
-# 11 Express.js: Note Taker
+# express-note-taker
 
-## Your Task
+***<h1 style="text-align: center;">![Top Language](https://img.shields.io/github/languages/top/mattchiaro/express-note-taker) ![Total Languages](https://img.shields.io/github/languages/count/MattChiaro/express-note-taker) ![repo size](https://img.shields.io/github/repo-size/mattchiaro/express-note-taker) [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)</h1>***
 
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+## Description
 
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+The Purpose of this project was to generate all the backend routes in express.js to handle API calls to and from a JSON file. Following the requirements outlined in the provided user story, I had to create various HTML and API routes to get the application functioning.
 
+Upon pressing "Get Started", you are redirected to the "Notes" page via a `GET` request. Then, you are able to type in a Note Title and Note Text. Once both of these fields have text within them, a save button will appear in the top right. Upon clicking the save button,the note is pushed into `db.json` via a `POST` request. Finally, it is displayed onto the left hand side of the page via a `GET` request.
 
-## User Story
-
-```
-AS A small business owner
-I WANT to be able to write and save notes
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
-```
+Clicking the "Note Taker" title in the top left hand side will return you to the homepage via a `GET` request.
 
 
-## Acceptance Criteria
+## Installation
 
-```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
-```
+The app is available online via [this heroku link](https://afternoon-shore-52649-757051be096a.herokuapp.com/). 
 
+Alternatively, you can host it locally by using `git clone` or downloading the zip file. 
+Upon downloading, run `npm i` for all of the necessary dependencies. `node server.js` will open it locally on port 3000. 
 
-## Mock-Up
+The port can be adjusted via line 8 of `server.js`.
 
-The following images show the web application's appearance and functionality:
+## Usage
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
+Enter the notes section by clicking "Get Started". Add your notes, hit save, and your note will persist in the database. To delete a note, hit the trash can icon to the left of it.
 
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
+![First note being added](./images/first-note.png)
+![Second note](./images/second-note.png)
+
+## Credits
+
+[nanoid](https://www.npmjs.com/package/nanoid) - Random string generation for NoteID.
 
 
-## Getting Started
+## License
 
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
-
-The following HTML routes should be created:
-
-* `GET /notes` should return the `notes.html` file.
-
-* `GET *` should return the `index.html` file.
-
-The following API routes should be created:
-
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
-
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
-
-
-## Bonus
-
-You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
-
-* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria: 
-
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application front end must connect to an Express.js back end.
-
-  * Application back end must store notes that have a unique id in a JSON file.
-
-  * Application must be deployed to Heroku.
-
-
-### Deployment: 36%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-
-### Application Quality: 11%
-
-* Application console is free of errors.
-
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-### Bonus: +10 Points
-
-* Application allows users to delete notes.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
