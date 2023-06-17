@@ -1,14 +1,14 @@
-
+//dependencies
 const express = require('express');
 const fs = require('fs');
 const { nanoid } = require('nanoid'); //random id gen
 
-
+//express setup
 const app = express();
 const PORT = process.env.PORT || 3000;
 const path = require('path');
 
-
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
@@ -41,6 +41,18 @@ app.post('/api/notes', (req, res) => {
     });
 });
 
+//delete note from db -- target the note by unique id and filter the array to all notes that do not match the id
+app.delete('/api/notes/:id', (req, res) => {
+    const id = req.params.id;
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        const notes = JSON.parse(data);
+        const newNotes = notes.filter(note => note.id !== id);
+        fs.writeFile('./db/db.json', JSON.stringify(newNotes), (err) => {
+            err ? console.log(err) : console.log('Note deleted!');
+        });
+        res.json(newNotes);
+    });
+});
 
 
 
@@ -49,5 +61,5 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-
+//listener
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`))
