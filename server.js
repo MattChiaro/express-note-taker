@@ -25,7 +25,21 @@ app.get('/api/notes', (req, res) => {
     });
 });
 
+//save new note to db with unique id
+app.post('/api/notes', (req, res) => {
 
+    const {title, text} = req.body; //deconstruct the body of the request
+    const newNote = { title, text, id: nanoid(5) } //rebuild, with unique id
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        const notes = JSON.parse(data);
+        notes.push(newNote);
+        fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
+            err ? console.log(err) : console.log('Note added!');
+        });
+        res.json(newNote);
+    });
+});
 
 
 
